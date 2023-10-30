@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Lang Quiz</title>
+    <link rel="stylesheet" href="custom.css" />
+</head>
+
+<body>
+    <h1>
+        C Lang Quiz !
+    </h1>
+
+    <section class="main">
+        <form method="POST" action="/submit">
+        <div class="container">
+            <div class="col">
+                <h3 id="questionBox">
+                    1) Lorem ipsum dolor sit amet, consectetur adipisicing elit Debitis?
+                </h3>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="first" value="a" required>
+                <label for="first">Testing 1</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="second" value="b" required>
+                <label for="second">Testing 2</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="third" value="c" required>
+                <label for="third">Testing 3</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="fourth" value="d" required>
+                <label for="fourth">Testing 4</label>
+            </div>
+            <button id="submit">Submit</button>
+        </div>
+        </form>
+    </section>
+    <div class="gotohome">
+        <a class="a_home" href="/" >Go to Home</a>
+    </div>
+    <script>
+        const quizData = [{
+            question: "What is the correct syntax for declaring a variable in C?",
+            a: "int variableName",
+            b: "variableName int",
+            c: "declare int variableName",
+            d: "int = variableName",
+            correct: "d",
+        },
+        {
+            question: "Which symbol is used for a single-line comment in C?",
+            a: "//",
+            b: "##",
+            c: "/*",
+            d: "``",
+            correct: "a",
+        },
+        {
+            question: "What is the output of printf('%d', sizeof(int)) on a typical system?",
+            a: "2",
+            b: "4",
+            c: "8",
+            d: "depends on system",
+            correct: "b",
+        },
+        {
+            question: "In C, what is the keyword used to define a constant?",
+            a: "const",
+            b: "constant",
+            c: "var",
+            d: "define",
+            correct: "a",
+        },
+        {
+            question: "Which loop is used for executing a block of code repeatedly as long as a condition is true in C?",
+            a: "for",
+            b: "while",
+            c: " do-while",
+            d: "switch",
+            correct: "b",
+        },
+        {
+            question: "What is the correct way to access the nth element of an array arr in C?",
+            a: " arr(n)",
+            b: " arr[n]",
+            c: "arr",
+            d: " arr->n",
+            correct: "b",
+        },
+        {
+            question: "In C, what is the purpose of the break statement?",
+            a: " To end the program",
+            b: " To skip the current iteration of a loop",
+            c: " To continue to the next iteration of a loop",
+            d: " To declare a variable",
+            correct: "b",
+        },
+        {
+            question: "Which C library function is used to allocate memory dynamically?",
+            a: " malloc()",
+            b: " calloc()",
+            c: " realloc()",
+            d: " allocate()",
+            correct: "a",
+        },
+        {
+            question: "What does the sizeof operator in C return?",
+            a: " The size in bytes of a data type or variable",
+            b: " The memory address of a variable",
+            c: " The value stored in a variable",
+            d: " The number of elements in an array",
+            correct: "a",
+        },
+        {
+            question: "What is the correct way to declare a function in C that takes no arguments and returns an integer?",
+            a: " int functionName(void)",
+            b: " functionName(int) : int",
+            c: " void functionName(int)",
+            d: " functionName() -> int",
+            correct: "a",
+        },
+        {
+            question: "What is the escape sequence for a newline character in C?",
+            a: " \n",
+            b: " \r",
+            c: " \t",
+            d: " \a",
+            correct: "a",
+        },
+        {
+            question: "Which C library function is used to allocate memory dynamically?",
+            a: " alloc()",
+            b: " malloc()",
+            c: " new()",
+            d: " allocate()",
+            correct: "b",
+        },
+        {
+            question: "In C, what is the purpose of the continue statement?",
+            a: " To end the program",
+            b: " To skip the current iteration and exit the loop",
+            c: " To skip the current iteration and continue with the next",
+            d: " To declare a variable",
+            correct: "b",
+        },
+        {
+            question: "What is the result of 10 / 3 in C?",
+            a: " 3",
+            b: " 3.3333",
+            c: " 3.0",
+            d: " 3.3333.",
+            correct: "c",
+        },
+        {
+            question: "Which C data type is used to store a single character?",
+            a: " char",
+            b: " character",
+            c: "var",
+            d: "  ch",
+            correct: "a",
+        },
+        {
+            question: "What is the purpose of the static keyword in C?",
+            a: " To indicate a variable that cannot be changed",
+            b: " To declare a global variable",
+            c: " To indicate a variable that retains its value between function calls",
+            d: " To specify a constant value",
+            correct: "c",
+        },
+        {
+            question: "What is the maximum value that an int can hold in C on most systems?",
+            a: " 32767",
+            b: " 2147483647",
+            c: " 65535",
+            d: " 4294967295",
+            correct: "a",
+        },
+        {
+            question: "What is the correct way to compare two strings in C?",
+            a: " strcmp(string1, string2)",
+            b: "const string1 == string2ant",
+            c: " string1.equals(string2)",
+            d: " compare(string1, string2)",
+            correct: "a",
+        },
+        {
+            question: "How do you define a macro in C?",
+            a: " macro name(parameters) { /* code / }",
+            b: " #define macro name(parameters) { / code / }",
+            c: " $macro name(parameters) { / code / }",
+            d: " macro name(parameters) [ / code */ ]",
+            correct: "b",
+        },
+        {
+            question: "What is the output of printf('%c', 65) in C?",
+            a: " 6",
+            b: " A",
+            c: " Error",
+            d: " 65",
+            correct: "a",
+        },
+        {
+            question: "What is the default value of an uninitialized variable in C?",
+            a: " 0",
+            b: " 1",
+            c: " Garbage value",
+            d: " -1",
+            correct: "c",
+        },
+        {
+            question: "What is the purpose of the const keyword in C?",
+            a: " To indicate a variable that cannot be changed",
+            b: " To declare a constant variable",
+            c: " To specify a constant value",
+            d: " To declare a constant function",
+            correct: "a",
+        },
+        {
+            question: "Which C operator is used for logical AND?",
+            a: " &&",
+            b: " ||",
+            c: " &",
+            d: " |",
+            correct: "a",
+        },
+        {
+            question: "In C, how do you define a function that takes two integers as parameters and returns their sum?",
+            a: " int add(int a, int  { return a + b }",
+            b: " function add(int a, int  { return a + b }",
+            c: " add(int a, int  => { return a + b }",
+            d: " void add(int a, int  { return a + b }",
+            correct: "a",
+        },
+        {
+            question: "Which of the following is not a valid C data type?",
+            a: " int",
+            b: " float",
+            c: " bool",
+            d: "char",
+            correct: "c",
+        },
+        {
+            question: "What is the output of printf('%d', 5 + 3 * 2)?",
+            a: " 16",
+            b: "11",
+            c: "12",
+            d: "13",
+            correct: "b",
+        },
+        {
+            question: "ss",
+            a: "const",
+            b: "constant",
+            c: "var",
+            d: "define",
+            correct: "a",
+        },
+        {
+            question: "In C, how is a multi-line comment indicated?",
+            a: " // Comment",
+            b: " # Comment #",
+            c: " /* Comment */",
+            d: " ' Comment '",
+            correct: "c",
+        },
+        {
+            question: "Which loop is used for executing a block of code repeatedly as long as a condition is true in C?",
+            a: " for",
+            b: " while",
+            c: " do-while",
+            d: " switch",
+            correct: "b",
+        },
+        {
+            question: "What is the purpose of the break statement in a loop?",
+            a: " To end the program",
+            b: " To skip the current iteration and continue with the next",
+            c: " To print a line break",
+            d: " To declare a variable",
+            correct: "b",
+        }
+        ];
+        let index = 0;
+        let correct = 0,
+            incorrect = 0,
+            total = quizData.length;
+        let questionBox = document.getElementById("questionBox");
+        let allInputs = document.querySelectorAll("input[type='radio']")
+        const loadQuestion = () => {
+            if (total === index) {
+                return quizEnd()
+            }
+            reset()
+            const data = quizData[index]
+            questionBox.innerHTML = `${index + 1}) ${data.question}`
+            allInputs[0].nextElementSibling.innerText = data.a
+            allInputs[1].nextElementSibling.innerText = data.b
+            allInputs[2].nextElementSibling.innerText = data.c
+            allInputs[3].nextElementSibling.innerText = data.d
+        }
+
+        document.querySelector("#submit").addEventListener(
+            "click",
+            function () {
+                const data = quizData[index]
+                const ans = getAnswer()
+                if (ans === data.correct) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+                index++;
+                loadQuestion()
+            }
+        )
+
+        const getAnswer = () => {
+            let ans;
+            allInputs.forEach(
+                (inputEl) => {
+                    if (inputEl.checked) {
+                        ans = inputEl.value;
+                    }
+                }
+            )
+            return ans;
+        }
+
+        const reset = () => {
+            allInputs.forEach(
+                (inputEl) => {
+                    inputEl.checked = false;
+                }
+            )
+        }
+
+        const quizEnd = () => {
+            // console.log(document.getElementsByClassName("container"));
+            document.getElementsByClassName("container")[0].innerHTML = `
+    <div class="col">
+        <h3 class="w-100">Congratulations ! You've scored ${correct} / ${total} </h3>
+    </div>
+`
+const c = "C";
+const dataToSend = {
+                score: correct
+            }
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        loadQuestion(index);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Quiz</title>
+    <link rel="stylesheet" href="custom.css" />
+</head>
+
+<body>
+    <h1>
+        SQL Quiz !
+    </h1>
+
+    <section class="main">
+        <form method="POST" action="/submit">
+        <div class="container">
+            <div class="col">
+                <h3 id="questionBox">
+                    1) Lorem ipsum dolor sit amet, consectetur adipisicing elit Debitis?
+                </h3>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="first" value="a" required>
+                <label for="first">Testing 1</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="second" value="b" required>
+                <label for="second">Testing 2</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="third" value="c" required>
+                <label for="third">Testing 3</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="fourth" value="d" required>
+                <label for="fourth">Testing 4</label>
+            </div>
+            <button id="submit">Submit</button>
+        </div>
+        </form>
+    </section>
+    <div class="gotohome">
+        <a class="a_home" href="/">Go to Home</a>
+    </div>
+    <script>
+        const quizData = [{
+            question: "What does SQL stand for?..",
+            a: "Structured Query Language",
+            b: "Sequential Query Language",
+            c: "Structured Question Language",
+            d: "Sequential Question Language",
+            correct: "a",
+        },
+        {
+            question: "Which SQL statement is used to retrieve data from abdatabase?..",
+            a: "SELECT",
+            b: "INSERT",
+            c: "UPDATE",
+            d: "DELETE",
+            correct: "a",
+        },
+        {
+            question: " Which SQL clause is used to filter the result set to includebonly rows that meet a specified condition?..",
+            a: "GROUP BY",
+            b: " HAVING",
+            c: " WHERE",
+            d: " FILTER ",
+            correct: "c",
+        },
+        {
+            question: " What SQL keyword is used to sort the result set in ascending order?..",
+            a: " SORT ",
+            b: " ORDER",
+            c: " ASC",
+            d: " DESC ",
+            correct: "c",
+        },
+        {
+            question: " Which SQL command is used to insert new data into a database table?..",
+            a: " CREATE ",
+            b: " INSERT",
+            c: " UPDATE",
+            d: " ADD",
+            correct: "b",
+        },
+        {
+            question: " What is the purpose of the SQL JOIN clause?..",
+            a: " To combine multiple tables into a single table",
+
+            b: " To split a table into multiple tables ",
+            c: " To delete rows from a table ",
+            d: " To update rows in a table ",
+            correct: "a",
+        },
+        {
+            question: "Which SQL data type is used to store whole numbers?..",
+            a: "DECIMAL",
+            b: "FLOAT",
+            c: "CHAR",
+            d: "INTEGER",
+            correct: "d",
+        },
+        {
+            question: "What SQL statement is used to change data in a database?..",
+            a: "ALTER",
+            b: "UPDATE",
+            c: "MODIFY",
+            d: "CHANGE",
+            correct: "b",
+        },
+        {
+            question: "In SQL, what is the purpose of the GROUP BY clause?..",
+            a: "To order the result set",
+            b: "To filter the result set",
+            c: "To group rows with the same values into summary rows",
+            d: "To limit the number of rows returned",
+            correct: "c",
+        },
+        {
+            question: "Which SQL function is used to count the number of rows in a table?..",
+            a: " COUNT() ",
+            b: " SUM() ",
+            c: " AVG() ",
+            d: " MAX() ",
+            correct: "a",
+        },
+        {
+            question: " What SQL command is used to delete a table from a database?.. ",
+            a: " DROP TABLE ",
+            b: " DELETE TABLE ",
+            c: " REMOVE TABLE ",
+            d: " ERASE TABLE ",
+            correct: "a",
+        },
+        {
+
+            question: "Which SQL operator is used to combine rows from two or more tables based on a related column between them?.. ",
+            a: " UNION ",
+            b: " INTERSECT ",
+            c: " JOIN ",
+            d: " MERGE ",
+            correct: "c",
+        },
+        {
+            question: " In SQL, what does the term &quot;foreign key&quot; refer to?.. ",
+            a: " A key used to unlock encrypted data ",
+            b: " A key used to navigate between database records ",
+            c: " A key that uniquely identifies each record in a table ",
+            d: " A key that establishes a link between two tables ",
+            correct: "d",
+        },
+        {
+            question: " What SQL statement is used to remove a specific row from a table?.. ",
+            a: " DELETE ",
+            b: " REMOVE ",
+            c: " ERASE ",
+            d: " DROP ",
+            correct: "a",
+        },
+        {
+            question: " What SQL clause is used to specify which columns to retrieve in a SELECT statement?.. ",
+            a: " SELECT ",
+            b: " WHERE ",
+            c: " FROM ",
+            d: " HAVING ",
+            correct: "a",
+        },
+        {
+            question: " Which SQL command is used to add a new column to an existing table?.. ",
+            a: " ALTER TABLE ",
+            b: " ADD COLUMN ",
+            c: " INSERT COLUMN ",
+            d: " MODIFY TABLE ",
+            correct: "b",
+        },
+        {
+            question: " What SQL operator is used to combine multiple conditions in a WHERE clause?.. ",
+            a: " AND ",
+
+            b: " OR ",
+            c: " NOT ",
+            d: " XOR ",
+            correct: "a",
+        },
+        {
+            question: " What SQL statement is used to retrieve all rows from a table?.. ",
+            a: " FETCH ",
+            b: " RETRIEVE ",
+            c: " SELECT ALL ",
+            d: " SELECT . ",
+            correct: "d",
+        },
+        {
+            question: " In SQL, what is a primary key used for?.. ",
+            a: " To ensure data is unique in a table ",
+            b: " To retrieve data from multiple tables ",
+            c: " To group data into summary rows ",
+            d: " To sort data in ascending order ",
+            correct: "a",
+        },
+        {
+            question: " Which SQL statement is used to change an existing table structure in a database?.. ",
+            a: " MODIFY TABLE ",
+            b: " ALTER TABLE ",
+            c: " UPDATE TABLE ",
+            d: " CHANGE TABLE ",
+            correct: "b",
+        },
+        {
+            question: " What is the purpose of the SQL GROUP BY clause when used with an aggregate function like SUM or AVG?.. ",
+            a: " To filter the result set ",
+            b: " To sort the result set ",
+            c: " To group rows with the same values into summary rows ",
+            d: " To limit the number of rows returned ",
+            correct: "c",
+        },
+        {
+            question: " In SQL, which clause is used to specify the conditions for grouping rows in a SELECT statement?.. ",
+            a: " WHERE ",
+            b: " GROUP BY ",
+            c: " HAVING ",
+            d: " ORDER BY ",
+
+            correct: "b",
+        },
+        {
+            question: " What SQL statement is used to create a new database?.. ",
+            a: " CREATE DATABASE ",
+            b: " NEW DATABASE ",
+            c: " ADD DATABASE ",
+            d: " MAKE DATABASE ",
+            correct: "a",
+        },
+        {
+            question: " What SQL clause is used to specify the order in which rows are returned in a result set?.. ",
+            a: " SORT BY ",
+            b: " ARRANGE BY ",
+            c: " ORDER BY ",
+            d: " RANK BY ",
+            correct: "c",
+        },
+        {
+            question: " Which SQL function is used to find the highest value in a column?.. ",
+            a: " MAX() ",
+            b: " MIN() ",
+            c: " SUM() ",
+            d: " AVG() ",
+            correct: "a",
+        }
+        ];
+        let index = 0;
+        let correct = 0,
+            incorrect = 0,
+            total = quizData.length;
+        let questionBox = document.getElementById("questionBox");
+        let allInputs = document.querySelectorAll("input[type='radio']")
+        const loadQuestion = () => {
+            if (total === index) {
+                return quizEnd()
+            }
+            reset()
+            const data = quizData[index]
+            questionBox.innerHTML = `${index + 1}) ${data.question}`
+            allInputs[0].nextElementSibling.innerText = data.a
+            allInputs[1].nextElementSibling.innerText = data.b
+            allInputs[2].nextElementSibling.innerText = data.c
+            allInputs[3].nextElementSibling.innerText = data.d
+        }
+
+        document.querySelector("#submit").addEventListener(
+            "click",
+            function () {
+                const data = quizData[index]
+                const ans = getAnswer()
+                if (ans === data.correct) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+                index++;
+                loadQuestion()
+            }
+        )
+
+        const getAnswer = () => {
+            let ans;
+            allInputs.forEach(
+                (inputEl) => {
+                    if (inputEl.checked) {
+                        ans = inputEl.value;
+                    }
+                }
+            )
+            return ans;
+        }
+
+        const reset = () => {
+            allInputs.forEach(
+                (inputEl) => {
+                    inputEl.checked = false;
+                }
+            )
+        }
+
+        const quizEnd = () => {
+            // console.log(document.getElementsByClassName("container"));
+            document.getElementsByClassName("container")[0].innerHTML = `
+    <div class="col">
+        <h3 class="w-100">Congratulations ! You've scored ${correct} / ${total} </h3>
+    </div>
+`
+const sql = "sql"
+const dataToSend = {
+                score: correct
+            }
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        loadQuestion(index);
+    </script>
+</body>
+
+</html>

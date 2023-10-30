@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quiz</title>
+    <link rel="stylesheet" href="custom.css" />
+</head>
+
+<body>
+    <h1>
+        Python Quiz !
+    </h1>
+
+    <section class="main">
+        <form method="POST" action="/submit">
+            <div class="container">
+                <div class="col">
+                    <h3 id="questionBox">
+                        1) Lorem ipsum dolor sit amet, consectetur adipisicing elit Debitis?
+                    </h3>
+                </div>
+                <div class="col box">
+                    <input name="option" type="radio" id="first" value="a" required>
+                    <label for="first">Testing 1</label>
+                </div>
+                <div class="col box">
+                    <input name="option" type="radio" id="second" value="b" required>
+                    <label for="second">Testing 2</label>
+                </div>
+                <div class="col box">
+                    <input name="option" type="radio" id="third" value="c" required>
+                    <label for="third">Testing 3</label>
+                </div>
+                <div class="col box">
+                    <input name="option" type="radio" id="fourth" value="d" required>
+                    <label for="fourth">Testing 4</label>
+                </div>
+                <button id="submit">Submit</button>
+            </div>
+        </form>
+    </section>
+    <div class="gotohome">
+        <a class="a_home" href="/">Go to Home</a>
+    </div>
+    <script>
+        const quizData = [{
+            question: "What is Python primarily known for?..",
+            a: "High-performance gaming",
+            b: "Web development",
+            c: "Machine learning and data analysis",
+            d: "Operating system development",
+            correct: "c",
+        },
+        {
+            question: "Which of the following is not a valid Python data type?..?",
+            a: "int",
+            b: "double",
+            c: "list",
+            d: "str",
+            correct: "b",
+        },
+        {
+            question: "How do you comment a single line in Python?..",
+            a: "/. This is a comment ./",
+            b: " # This is a comment ",
+            c: " // This is a comment ",
+            d: " -- This is a comment ",
+            correct: "b",
+        },
+        {
+            question: " Which operator is used for exponentiation in Python?.. ",
+            a: " ^ ",
+            b: " .. ",
+            c: " % ",
+            d: " &amp; ",
+            correct: "b",
+        },
+        {
+            question: " What is the output of `print(3 . &#39;abc&#39;)` in Python?.. ",
+            a: " abcabcabc ",
+            b: " 9abc ",
+            c: " 3abc ",
+            d: " abc3 ",
+            correct: "a",
+        },
+        {
+            question: " Which of the following is a mutable data type in Python?.. ",
+            a: " int ",
+            b: " str ",
+            c: " list ",
+            d: " tuple ",
+            correct: "c",
+
+        },
+        {
+            question: "What is the result of `10 == &quot;10&quot;` in Python?..",
+            a: "True",
+            b: "False",
+            c: "Error",
+            d: "None",
+            correct: "b",
+        },
+        {
+            question: "How do you create an empty list in Python?..",
+            a: "empty_list = []",
+            b: "empty_list = list()",
+            c: "empty_list = {}",
+            d: "empty_list = [None]",
+            correct: "a",
+        },
+        {
+            question: "Which of the following is a valid way to define a function in Python?..",
+            a: "def myFunction:",
+            b: "function myFunction:",
+            c: "function myFunction()",
+            d: "def myFunction():",
+            correct: "d",
+        },
+        {
+            question: "What is the purpose of the `pass` statement in Python?..",
+            a: "To break out of a loop",
+            b: "To skip the current iteration of a loop",
+            c: "To define a function",
+            d: "To raise an exception",
+            correct: "b",
+        },
+        {
+            question: " Which of the following is used to open a file in Python for reading?..",
+            a: " open(&quot;file.txt&quot;, &quot;r&quot;)",
+            b: " open(&quot;file.txt&quot;, &quot;w&quot;)",
+            c: " open(&quot;file.txt&quot;, &quot;a&quot;)",
+            d: " open(&quot;file.txt&quot;, &quot;x&quot;)",
+            correct: "a",
+        },
+        {
+            question: " What is the output of `print(list(range(2, 6)))` in Python?..",
+            a: " [2, 3, 4, 5]",
+            b: " [2, 3, 4, 5, 6]",
+
+            c: " [2, 4, 6]",
+            d: " [2, 5]",
+            correct: "a",
+        },
+        {
+            question: " Which keyword is used to exit a function and return a value in Python?..",
+            a: " break",
+            b: " exit",
+            c: " return",
+            d: " continue",
+            correct: "c",
+        },
+        {
+            question: " What is the output of print('Hello + 3!&quot') in Python?..",
+            a: " Hello!!!",
+            b: " Hello!3",
+            c: " Hello!!!3",
+            d: " Error",
+            correct: "a",
+        },
+        {
+            question: " Which of the following is not a valid way to comment multiple lines in Python?..",
+            a: " /. This is a comment ./",
+            b: " &#39;&#39;&#39; This is a comment &#39;&#39;&#39;",
+            c: " # This is a comment",
+            d: " &quot;&quot;&quot; This is a comment &quot;&quot;&quot;",
+            correct: "a",
+        },
+        {
+            question: " What is the result of `10 / 3` in Python 3?..",
+            a: " 3.3333",
+            b: " 3",
+            c: " 3.0",
+            d: " 4",
+            correct: "a",
+        },
+        {
+            question: " Which of the following is used to find the length of a list in Python?..",
+            a: " size()",
+            b: " count()",
+            c: " length()",
+            d: " len()",
+            correct: "d",
+        },
+
+        {
+            question: " How do you import an entire module in Python?..",
+            a: " import module_name",
+            b: " from module_name import .",
+            c: " use module_name",
+            d: " include module_name",
+            correct: "a",
+        },
+        {
+            question: " What does the continue statement do in a loop?..",
+            a: " Exits the loop",
+            b: " Restarts the loop",
+            c: " Skips the current iteration and continues with the next",
+            d: " Halts the program",
+            correct: "c",
+        },
+        {
+            question: " Which of the following is not a valid comparison operator in Python?..",
+            a: " ==",
+            b: " &lt;=",
+            c: " !=",
+            d: " &gt;&lt;",
+            correct: "d",
+        },
+        {
+            question: " What is the output of print(10 % 3) in Python?..",
+            a: " 0",
+            b: " 1",
+            c: " 2",
+            d: " 3",
+            correct: "b",
+        },
+        {
+            question: " Which data structure is used to implement a Last-In-First-Out (LIFO) approach in Python?..",
+            a: " Stack",
+            b: " Queue",
+            c: " List",
+            d: " Tuple",
+            correct: "a",
+        },
+        {
+            question: " What is the purpose of the __init__ method in Python classes?..",
+            a: " To destroy an object",
+            b: " To initialize the classop",
+            c: " To define class variables",
+            d: " To create a subclass",
+            correct: "b",
+        },
+        {
+            question: " How can you check if a key exists in a Python dictionary?..",
+            a: " Using the exists() method",
+            b: " Using the contains() method",
+            c: " Using the in keyword",
+            d: " Using the has_key() method",
+            correct: "c",
+        },
+        {
+            question: " Which built-in function is used to sort a list in Python?..",
+            a: " sort()",
+            b: " sorted()",
+            c: " arrange()",
+            d: " order()",
+            correct: "b",
+        }
+        ];
+        let index = 0;
+        let correct = 0,
+            incorrect = 0,
+            total = quizData.length;
+        let questionBox = document.getElementById("questionBox");
+        let allInputs = document.querySelectorAll("input[type='radio']")
+        const loadQuestion = () => {
+            if (total === index) {
+                return quizEnd()
+            }
+            reset()
+            const data = quizData[index]
+            questionBox.innerHTML = `${index + 1}) ${data.question}`
+            allInputs[0].nextElementSibling.innerText = data.a
+            allInputs[1].nextElementSibling.innerText = data.b
+            allInputs[2].nextElementSibling.innerText = data.c
+            allInputs[3].nextElementSibling.innerText = data.d
+        }
+
+        document.querySelector("#submit").addEventListener(
+            "click",
+            function () {
+                const data = quizData[index]
+                const ans = getAnswer()
+                if (ans === data.correct) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+                index++;
+                loadQuestion()
+            }
+        )
+
+        const getAnswer = () => {
+            let ans;
+            allInputs.forEach(
+                (inputEl) => {
+                    if (inputEl.checked) {
+                        ans = inputEl.value;
+                    }
+                }
+            )
+            return ans;
+        }
+
+        const reset = () => {
+            allInputs.forEach(
+                (inputEl) => {
+                    inputEl.checked = false;
+                }
+            )
+        }
+
+        const quizEnd = () => {
+            // console.log(document.getElementsByClassName("container"));
+            document.getElementsByClassName("container")[0].innerHTML = `
+    <div class="col">
+        <h3 class="w-100">Congratulations ! You've scored ${correct} / ${total} </h3>
+    </div>
+`
+const python = "python"
+            const dataToSend = {
+                score: correct
+            }
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        loadQuestion(index);
+    </script>
+</body>
+
+</html>

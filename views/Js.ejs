@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz</title>
+    <link rel="stylesheet" href="custom.css" />
+</head>
+
+<body>
+    <h1>
+        JavaScript Quiz !
+    </h1>
+
+    <section class="main">
+        <form method="POST" action="/submit">
+        <div class="container">
+            <div class="col">
+                <h3 id="questionBox">
+                    1) Lorem ipsum dolor sit amet, consectetur adipisicing elit Debitis?
+                </h3>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="first" value="a" required>
+                <label for="first">Testing 1</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="second" value="b" required>
+                <label for="second">Testing 2</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="third" value="c" required>
+                <label for="third">Testing 3</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="fourth" value="d" required>
+                <label for="fourth">Testing 4</label>
+            </div>
+            <button id="submit">Submit</button>
+        </div>
+</form>
+    </section>
+    <div class="gotohome">
+        <a class="a_home" href="/">Go to Home</a>
+    </div>
+    <script>
+        const quizData = [{
+            question: "JavaScript is primarily used for",
+            a: "Server-side scripting",
+            b: "Client-side scripting",
+            c: "Database management",
+            d: "Machine learning",
+            correct: "b",
+        },
+        {
+            question: "Which HTML tag is used to include JavaScript code in an HTML document?",
+            a: "<js>",
+            b: "<javascript>",
+            c: "<script>",
+            d: "<code>",
+            correct: "c",
+        },
+        {
+            question: " How do you declare a variable in JavaScript?",
+            a: "var myVar",
+            b: "variable myVar",
+            c: "let myVar",
+            d: "<code>",
+            correct: "a",
+        },
+        {
+            question: "What is the correct way to comment out a single line in JavaScript?",
+            a: " <!-- This is a comment -->",
+            b: " /* This is a comment */",
+            c: " // This is a comment",
+            d: " ** This is a comment **",
+            correct: "c",
+        },
+        {
+            question: " How do you declare a constant in JavaScript?",
+            a: " constant myCons",
+            b: "const myConst",
+            c: "var myConst",
+            d: "let myConst",
+            correct: "b",
+        },
+        {
+            question: " Which of the following is a valid data type in JavaScript?",
+            a: "boolean",
+            b: "int",
+            c: "char",
+            d: "string",
+            correct: "a",
+        },
+        {
+            question: "What will be the result of the following expression: '5' + 2?",
+            a: "7",
+            b: "52",
+            c: " “52” ",
+            d: "6",
+            correct: "c",
+        },
+        {
+            question: "Which function is used to display a message in a dialog box in JavaScript?",
+            a: "alert()",
+            b: "confirm()",
+            c: "prompt()",
+            d: "log()",
+            correct: "a",
+        },
+        {
+            question: " What does the 'NaN' value represent in JavaScript?",
+            a: "Null",
+            b: "not a Number",
+            c: "Negative",
+            d: "No Assignment",
+            correct: "b",
+        },
+        {
+            question: " Which operator is used to check if two values are equal in both value and data type?",
+            a: "==",
+            b: "===",
+            c: "=",
+            d: "!=",
+            correct: "b",
+        },
+        {
+            question: " How do you write an if statement in JavaScript?",
+            a: "if condition:",
+            b: "if(condition)",
+            c: "if{condition}",
+            d: "if-condition",
+            correct: "b",
+        },
+        {
+            question: " Which of the following is a loop in JavaScript",
+            a: "repeat",
+            b: "for-in",
+            c: "until",
+            d: "if-else",
+            correct: "b",
+        },
+        {
+            question: " How do you define a function in JavaScript?",
+            a: "function myFunction(){}",
+            b: "def myFunction(){}",
+            c: "func myFunction(){}",
+            d: "method myFunction",
+            correct: "a",
+        },
+        {
+            question: "What is the purpose of the 'return' statement in a JavaScript  function?",
+            a: "To stop the execution of the function",
+            b: "To return a value from the function",
+            c: "To define a variable",
+            d: "To comment out code",
+            correct: "b",
+        },
+        {
+            question: "Which function is used to find the length of an array in JavaScript?",
+            a: "sizeOf()",
+            b: "lengthOf()",
+            c: "size()",
+            d: "length()",
+            correct: "d",
+        },
+        {
+            question: " How do you add a new element to the end of an array in JavaScript?",
+            a: "addElement()",
+            b: "append()",
+            c: "push()",
+            d: "insert()",
+            correct: "c",
+        },
+        {
+            question: " What is the purpose of the 'null' value in JavaScript?",
+            a: "It represents an empty string.",
+            b: "It indicates a variable that has not been declared.",
+            c: "It represents an undefined value.",
+            d: "It represents an absence of a value or object.",
+            correct: "d",
+        },
+        {
+            question: " How do you write a comment that spans multiple lines in JavaScript?",
+            a: " /* This is a comment */",
+            b: " // This is a comment //",
+            c: " -- This is a comment --",
+            d: " ** This is a comment **",
+            correct: "a",
+        },
+        {
+            question: " What is the purpose of the 'typeof' operator in JavaScript?",
+            a: " To check the data type of a variable",
+            b: " To perform mathematical operations95",
+            c: " To compare two strings",
+            d: " To declare a variable",
+            correct: "a",
+        },
+        {
+            question: " What is the correct way to include an external JavaScript file in an HTML document?",
+            a: '<script src="script.js">',
+            b: ' <js-file href="script.js">',
+            c: ' <script file="script.js">',
+            d: '<link href="script.js" rel="script">',
+            correct: "a",
+        },
+        {
+            question: " Which operator is used for logical AND in JavaScript?",
+            a: "&&",
+            b: "||",
+            c: "!",
+            d: "&",
+            correct: "a",
+        },
+        {
+            question: " What does the 'typeof NaN' expression return?",
+            a: " 'number'",
+            b: " 'NaN'",
+            c: " 'string'",
+            d: " 'undefined'",
+            correct: "a",
+        },
+        {
+            question: " How do you convert a string to an integer in JavaScript?",
+            a: " parseInt()",
+            b: " toInt()",
+            c: " stringToInt()",
+            d: " int()",
+            correct: "a",
+        },
+        {
+            question: " Which built-in object is used to represent a web page's document in JavaScript?",
+            a: "window",
+            b: "document",
+            c: "webpage",
+            d: "browser",
+            correct: "b",
+        },
+        {
+            question: " How do you create an anonymous function in JavaScript?",
+            a: " function() {}",
+            b: " anonymous() {}",
+            c: " func() {}",
+            d: " lambda() {}",
+            correct: "a",
+        },
+        {
+            question: " What is the purpose of the 'this' keyword in JavaScript?",
+            a: " To access the current date and time",
+            b: "To refer to the current HTML element",
+            c: "To create a new object",
+            d: "To define a variable",
+            correct: "b",
+        },
+        {
+            question: "What is the result of the expression: '5' - 2?",
+            a: "3",
+            b: "52",
+            c: "“3”",
+            d: "-3",
+            correct: "a",
+        },
+        {
+            question: "What is the purpose of the 'parseInt()' function in JavaScript?",
+            a: "To parse integers from a string",
+            b: "To round a number to the nearest integer",
+            c: "To find the length of a string",
+            d: " To convert a string to uppercase",
+            correct: "a",
+        },
+        {
+            question: "How do you declare a global variable in JavaScript?",
+            a: " var myVar",
+            b: "global myVar",
+            c: "let myVar",
+            d: "const myVar",
+            correct: "a",
+        },
+        {
+            question: "Which function is used to remove the last element from an array in JavaScript?",
+            a: " removeLast()",
+            b: "pop()",
+            c: "shift()",
+            d: " remove()",
+            correct: "b",
+        }
+        ];
+
+
+        let index = 0;
+        let correct = 0,
+            incorrect = 0,
+            total = quizData.length;
+        let questionBox = document.getElementById("questionBox");
+        let allInputs = document.querySelectorAll("input[type='radio']")
+        const loadQuestion = () => {
+            if (total === index) {
+                return quizEnd()
+            }
+            reset()
+            const data = quizData[index]
+            questionBox.innerHTML = `${index + 1}) ${data.question}`
+            allInputs[0].nextElementSibling.innerText = data.a
+            allInputs[1].nextElementSibling.innerText = data.b
+            allInputs[2].nextElementSibling.innerText = data.c
+            allInputs[3].nextElementSibling.innerText = data.d
+        }
+
+        document.querySelector("#submit").addEventListener(
+            "click",
+            function () {
+                const data = quizData[index]
+                const ans = getAnswer()
+                if (ans === data.correct) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+                index++;
+                loadQuestion()
+            }
+        )
+
+        const getAnswer = () => {
+            let ans;
+            allInputs.forEach(
+                (inputEl) => {
+                    if (inputEl.checked) {
+                        ans = inputEl.value;
+                    }
+                }
+            )
+            return ans;
+        }
+
+        const reset = () => {
+            allInputs.forEach(
+                (inputEl) => {
+                    inputEl.checked = false;
+                }
+            )
+        }
+
+        const quizEnd = () => {
+            // console.log(document.getElementsByClassName("container"));
+            document.getElementsByClassName("container")[0].innerHTML = `
+    <div class="col">
+        <h3 class="w-100">Congratulations ! You've scored ${correct} / ${total} </h3>
+    </div>
+`
+const js = "JS"
+const dataToSend = {
+                score: correct
+            }
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        loadQuestion(index);
+    </script>
+</body>
+
+</html>

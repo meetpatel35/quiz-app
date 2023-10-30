@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Logic Pro</title>
+    <link rel="stylesheet" href="utils.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+    <!-- <script src="script.js"></script> -->
+</head>
+
+<body>
+
+    <nav class="navigation max-width-1 m-auto">
+
+        <div class="nav-left">
+
+            <a href="index.html"><span><img src="img/logo.png" width="105px" alt=""></span></a>
+
+            <span id="heading">Code Logic Pro</span>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a onmouseover="showDropdown()" class="quiz" href="#">Quiz</a></li>
+
+                <div id="main_dropdown" class="main_dropdown">
+                    <ul class="languages">
+                        <a href="/C"><li>C</li></a>
+                        <a href="/node"><li>Node JS</li></a>
+                        <a href="/js"><li>JavaScript</li></a>
+                        <a href="/python"><li>Python</li></a>
+                        <a href="/sql"><li>SQL</li></a>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <form action="" method="get">
+                <!-- <form action="search.html" method="get"> -->
+                <!-- <input class="form-input" type="text" name="query" placeholder="Search here"> -->
+                <button class="btn">Welcome <%= name %> </button>
+                <!-- <form action="/logout?_method=DELETE" method="POST">
+                    <button style="margin-left: 10px;" class="nav-link fw-bold py-1 px-2 btn btn-dark text-white" type="submit">Logout</button>
+                </form> -->
+            </form>
+        </div>
+
+    </nav>
+
+    <div class="content max-width-1 m-auto my-2">
+        <div class="content-left">
+            <h1 id="h1">Discover Your Language skills today !</h1>
+            <p class="para1">Code Logic Pro is a website which lets you learn various programming language in an simple
+                way.</p>
+            <br>
+            <br>
+            <p>Welcome to code logic pro, a leading web development agency based in Mumbai, MH. We specialize in creating Quizes that cater to various programming languages.
+                Our team of skilled developers and designers work tirelessly to craft visually appealing and user-friendly home pages that showcase the essence of your quiz website.</p>
+        </div>
+
+        <div class="content-right">
+            <img src="img/logo1.png" alt="">
+        </div>
+
+    </div>
+
+    <div class="max-width-1 m-auto">
+        <hr>
+    </div>
+
+    <!-- <div class="home-articles max-width-1 m-auto">
+
+        <h2>Languages we Teach :</h2>
+
+        <div class="home-article">
+            <div class="home-article-img">
+                <img src="img/c.jfif" alt="">
+            </div>
+
+            <div class="home-article-content font1">
+                //<a href="blogpost.html"><h3>C Language</h3></a>
+                <a href="#"><h3>C Language</h3></a>
+                <div>mid level language</div>
+                <span>C is a powerful general-purpose programming language. It can be used to develop software like operating systems, databases, compilers, and so on.</span>
+            </div>
+        </div>
+
+        <div class="home-article">
+            <div class="home-article-img">
+                <img src="img/python.jfif" alt="">
+            </div>
+
+            <div class="home-article-content font1">
+                <a href="#"><h3>Python</h3></a>
+                <div>Low level language</div>
+                <span>Python is a popular programming language. Python can be used on a server to create web applications.</span>
+            </div>
+        </div>
+
+        <div class="home-article">
+            <div class="home-article-img">
+                <img src="img/html.png" alt="">
+            </div>
+
+            <div class="home-article-content font1">
+                <a href="#"><h3>HTML</h3></a>
+                <div>markup language</div>
+                <span>HTML is the standard markup language for Web pages. With HTML you can create your own Website. &ThickSpace;&ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace; &ThickSpace;  HTML is easy to learn </span>
+            </div>
+        </div>
+
+        <div class="home-article">
+            <div class="home-article-img">
+                <img src="img/js" alt="">
+            </div>
+
+            <div class="home-article-content font1">
+                <a href="#"><h3>JavaScript</h3></a>
+                <div>framework language derived from java</div>
+                <span>JavaScript is the programming language of the Web. This tutorial will teach you JavaScript from basic to advanced.</span>
+            </div>
+        </div>
+
+        <div class="home-article">
+            <div class="home-article-img">
+                <img src="img/cpp.jfif" alt="">
+            </div>
+
+            <div class="home-article-content font1">
+                <a href="#"><h3>C++</h3></a>
+                <div>high level language</div>
+                <span>advance version of C including object oriented programming</span>
+            </div>
+        </div>
+
+        <div class="home-article">
+            <div class="home-article-img">
+                <img src="img/css.png" alt="">
+            </div>
+
+            <div class="home-article-content font1">
+                <a href="#"><h3>CSS</h3></a>
+                <div>Easy language used to design websites</div>
+                <span>CSS is the language we use to style an HTML document. CSS describes how HTML elements should be displayed.</span>
+            </div>
+        </div>
+
+        <div class="home-article">
+            <div class="home-article-img">
+                <img src="img/sql.jfif" alt="">
+            </div>
+
+            <div class="home-article-content font1">
+                <a href="#"><h3>SQL(structured query language)</h3></a>
+                <div>Backend query firing language</div>
+                <span>It is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS)</span>
+            </div>
+        </div>
+
+    </div> -->
+
+    <br>
+    <div class="head" id="about">
+        <h1>About Us</h1>
+    </div>
+    <div class="abtcont">
+        <!-- <p class="para">
+            We are Code Logic Pro , a open source skill learning platform at absolutly no cost charged .
+        </p>
+        <p class="para">
+            We are Code Logic Pro , a open source skill learning platform at absolutly no cost charged , learn and grow
+            with us ! .
+        </p>
+        <p class="para">
+            We provide various Quizes for different languages .
+        </p>
+        <p class="para">
+            Be a Pro at any language by remotely learning from our website with intresting Quizes to track your progress
+            in your goals.
+        </p>
+        <p class="para">
+            Attempt Quizes and upskill yourself ! Learn and grow with us ! .
+        </p> -->
+        <div class="abtdesc">
+            Welcome to code logic pro, a leading web development agency based in Mumbai, MH. We specialize in creating engaging home pages for quiz websites that cater to various programming languages.
+            At code logic pro, we understand the importance of a compelling and informative about section. Our team of skilled developers and designers work tirelessly to craft visually appealing and user-friendly home pages that showcase the essence of your quiz website. With our expertise and attention to detail, we ensure that your website stands out from the competition and leaves a lasting impression on your visitors.
+        </div>
+        <div class="abtimg">
+            <img src="img/quizabt.png" alt="">
+        </div>
+
+    </div>
+
+    <div class="contact">
+        <a href="contact.html">Contact Us &#8599;</a>
+    </div>
+
+    <div class="footer m-auto">
+        Copyright &copy; :&ThickSpace; CodeLogicPro.in &ThickSpace; All rights reserved @ 2022.
+    </div>
+
+    <script>
+        // document.getElementById("quiz").addEventListener('click', () => {
+        //     console.log("Hovered");
+        //     document.querySelectorAll("#main_dropdown").style.display = "block";
+        // })
+
+        document.getElementById("main_dropdown").style.display = "none"
+        let showDropdown = () => {
+            document.getElementById("main_dropdown").style.display = "block"
+        }
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script> -->
+</body>
+
+</html>
