@@ -51,7 +51,7 @@ app.use(express.static(imageFile))
 
 app.use(flash())
 app.use(session({
-    secret : process.env.SESSION_SECRET ,
+    secret : "MY_SECRET_KEY" ,
     resave : false ,
     saveUninitialized : false
 }))
@@ -86,8 +86,8 @@ app.post('/register', checkNotAuthenticated , async (req, res) => {
             password: "Evenidk@123",
             database : "test"
         });
-        const sql = 'INSERT INTO allUsersMain2 VALUES (?,?,?,?)';
-        con.query(sql , [name , email , hashedPassword , 0] , (res, err) => {
+        const sql = 'INSERT INTO allUsersMain2 VALUES (?,?,?,?,?)';
+        con.query(sql , [name , email , hashedPassword , 0 , null] , (res, err) => {
             if (err) {
                 console.log(err);
             } else {
@@ -105,9 +105,8 @@ app.post('/register', checkNotAuthenticated , async (req, res) => {
 
 app.post('/submit', checkAuthenticated ,(req , res) => {
     const score = req.body.score;
+    const lang = req.body.lang;
     const username = req.user.name
-
-    // console.log(name);
     console.log(score);
 
     var con = mysql.createConnection({
@@ -116,8 +115,8 @@ app.post('/submit', checkAuthenticated ,(req , res) => {
         password: "Evenidk@123",
         database : "test"
     });
-    const sql = 'update allusersmain2 set score = (?) where u_name = (?)';
-    con.query(sql , [score , username] , (res, err) => {
+    const sql = 'update allusersmain2 set score = (?,?) where u_name = (?)';
+    con.query(sql , [score, lang , username] , (res, err) => {
         if (err) {
             console.log(err);
         } else {
@@ -155,9 +154,9 @@ app.get('/python' ,(req, res) => {
     res.render('Python.ejs')
 })
 
-app.get('/submit', checkAuthenticated ,(req, res) => {
-    res.render('Score.ejs' , {name : req.user.name , score : req.user.score} )
-})
+// app.get('/submit', checkAuthenticated ,(req, res) => {
+//     res.render('Score.ejs' , {name : req.user.name , score : req.user.score} )
+// })
 
 
 app.delete('/logout',(req, res) => {

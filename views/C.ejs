@@ -348,9 +348,10 @@
         <h3 class="w-100">Congratulations ! You've scored ${correct} / ${total} </h3>
     </div>
 `
-const c = "C";
+const lang = "C";
 const dataToSend = {
-                score: correct
+                score: correct,
+                lang : lang
             }
             fetch('/submit', {
                 method: 'POST',

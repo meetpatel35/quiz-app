@@ -1,0 +1,33 @@
+.main{
+    margin-top: 100px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    font-size: 25px;
+    border: 2px solid black;
+    width: 30vw;
+    height: 50vh;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.username{
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    width: 17vw;
+}
+
+.password{
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    width: 17vw;
+}
+
+#login-btn{
+    cursor: pointer;
+}
